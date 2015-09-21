@@ -44,7 +44,7 @@ class post_listener implements EventSubscriberInterface
         //file_put_contents('/tmp/out', print_r($message, true));
         if ($message !== null)
         {
-            Pipebot::say($message);
+            \Pipebot::say($message);
         }
     }
 
