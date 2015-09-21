@@ -4,6 +4,8 @@ namespace sr\pipebot\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+require_once(dirname(dirname(__FILE__)).'/pipebot/pipebot.php');
+
 class post_listener implements EventSubscriberInterface
 {
     static public function getSubscribedEvents()
@@ -38,10 +40,10 @@ class post_listener implements EventSubscriberInterface
             $message = "'\x02${forum_name}\x02' forum: New post in '\x02${topic_title}\x02' thread: ${url}";
         }
 
-        var_dump($message);
+        //var_dump($message);
         if ($message !== null)
         {
-            // Pipebot::say($message);
+            Pipebot::say($message);
         }
     }
 
