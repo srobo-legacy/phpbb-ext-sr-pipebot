@@ -1,0 +1,6 @@
+services:
+    sr.pipebot.listener:
+        class: sr\pipebot\event\listener
+        tags:
+            - { name: event.listener }
+
