@@ -17,7 +17,8 @@ namespace sr\pipebot;
 * these methods are defined in \phpbb\extension\base, which this
 * class extends, but you can overwrite them to give special
 * instructions for those cases.
-*/
+
 class ext extends \phpbb\extension\base
 {
 }
+*/
