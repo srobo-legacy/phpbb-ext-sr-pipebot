@@ -41,6 +41,7 @@ class post_listener implements EventSubscriberInterface
         }
 
         //var_dump($message);
+        //file_put_contents('/tmp/out', print_r($message, true));
         if ($message !== null)
         {
             Pipebot::say($message);
