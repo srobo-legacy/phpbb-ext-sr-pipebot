@@ -15,7 +15,39 @@ class post_listener implements EventSubscriberInterface
 
     public function submit_post_modify_sql_data($event)
     {
-        $info = print_r($event, true);
-        file_put_contents("/tmp/out", $info);
+        $post_mode = $event['post_mode'];
+        if ($post_mode != 'post' && $post_mode != 'reply')
+        {
+            return;
+        }
+
+        $post_info = $event['data'];
+        $forum_name = html_entity_decode($post_info['forum_name']);
+        $topic_title = html_entity_decode($post_info['topic_title']);
+
+        $url = $this->build_url($post_info);
+
+        $message = null;
+        if ($post_mode == 'post')
+        {
+            $message = "'\x02${forum_name}\x02' forum: New thread '\x02${topic_title}\x02': ${url}";
+        }
+
+        if ($post_mode == 'reply')
+        {
+            $message = "'\x02${forum_name}\x02' forum: New post in '\x02${topic_title}\x02' thread: ${url}";
+        }
+
+        var_dump($message);
+        if ($message !== null)
+        {
+            // Pipebot::say($message);
+        }
+    }
+
+    private function build_url($post_info)
+    {
+        $post_id = $post_info['post_id'];
+        return "http://srobo.org/forum/${post_id}";
     }
 }
