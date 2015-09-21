@@ -4,7 +4,7 @@ namespace sr\pipebot\event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class PostListener implements EventSubscriberInterface
+class post_listener implements EventSubscriberInterface
 {
     static public function getSubscribedEvents()
     {
