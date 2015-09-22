@@ -1,6 +1,13 @@
 services:
-    sr.pipebot.listener:
+    sr.pipebot.post_listener:
         class: sr\pipebot\event\post_listener
         tags:
             - { name: event.listener }
 
+    sr.pipebot.url_listener:
+        class: sr\pipebot\event\url_listener
+        tags:
+            - { name: event.listener }
+        arguments:
+            - @request
+            - @config
