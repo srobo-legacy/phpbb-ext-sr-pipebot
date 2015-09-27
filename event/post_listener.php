@@ -11,13 +11,13 @@ class post_listener implements EventSubscriberInterface
     static public function getSubscribedEvents()
     {
         return array(
-            'core.submit_post_modify_sql_data'  => 'submit_post_modify_sql_data',
+            'core.submit_post_end'  => 'submit_post_end',
         );
     }
 
-    public function submit_post_modify_sql_data($event)
+    public function submit_post_end($event)
     {
-        $post_mode = $event['post_mode'];
+        $post_mode = $event['mode'];
         if ($post_mode != 'post' && $post_mode != 'reply')
         {
             return;
